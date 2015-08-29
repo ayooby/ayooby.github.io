@@ -1,0 +1,12 @@
+---
+layout: default
+modal-id: 2
+date: 2014-07-17
+img: developing.png
+alt: image-alt
+project-date: Future
+client: for fun
+category: Mobile app Development
+description: I currently Developing a new Mobile app for Calculating card game and download link will be add here
+
+---
