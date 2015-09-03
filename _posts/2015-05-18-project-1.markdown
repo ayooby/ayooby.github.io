@@ -7,6 +7,6 @@ alt: image-alt
 project-date: Aug 2015
 client: Kiyan Apadana Group
 category: Web Development
-description: Kiay apadana Group it is some kind new start up, their founder can print on any surfaces and right now their site is up fo show off what are they doing.
+description: Kiyan apadana Group is some kind of new start-up, their founder can print on any surfaces and right now their site is up for show off what are they doing.
 
 ---
