@@ -5,8 +5,8 @@ date: 2015-08-18
 img: kiyanapadana.png
 alt: image-alt
 project-date: Aug 2015
-client: Kiyan Apadana Group
+client: Arad Gostar
 category: Web Development
-description: Kiyan apadana Group is some kind of new start-up, their founder can print on any surfaces and right now their site is up for show off what are they doing.
+description: KMAG Group is some kind of new start-up, their founder can print on any surfaces and right now their site is up for show off what are they doing.
 
 ---
