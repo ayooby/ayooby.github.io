@@ -18,7 +18,7 @@ color:
 
 # Footer settings
 footer:
-  copyright: All is Free
+  copyright: The MIT License (MIT)
   location: Lara What!
   social: Find Me 
   credits: Free hosting with GitHub Pages
@@ -28,7 +28,7 @@ social:
   - title: twitter
     url: http://twitter.com/sajad666
   - title: facebook
-    url:
+    url: http://fb.com/sajad666
   - title: stack-overflow
     url: http://stackoverflow.com/questions/tagged/jekyll
   - title: github
@@ -39,7 +39,7 @@ address:
   - line: Laravel is a free open-source 
   - line: PHP web application framework.
   - line: If You Want to Know More You can
-  - line: Visit following links':'
+  - line: 'Visit following links:'
   - title: Laravel Offical Webstie
   - url: 'http://laravel.com/'
 
