@@ -54,6 +54,7 @@ hr.star-primary {
     content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0 ";
     text-decoration: line-through;
     margin: 0 10px;
+}
 
 hr.star-light:after {
     color: #fff;
