@@ -1,43 +1,61 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { useState } from "react"
+import { graphql } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import PostsTab from "../components/postsTab"
+
+import { Button } from "../utils/ui"
 
 const BlogIndex = ({ data, location }) => {
+  const [currentLang, setLang] = useState("Farsi")
+
   const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+  const posts = {
+    Farsi: data.allMarkdownRemark.edges.filter(
+      ({ node }) => node.frontmatter.lang === "fa"
+    ),
+    English: data.allMarkdownRemark.edges.filter(
+      ({ node }) => node.frontmatter.lang === "en"
+    ),
+  }
+
+  const changeLang = lang => {
+    if (lang === currentLang) return
+    if (currentLang === "Farsi") return setLang("English")
+    setLang("Farsi")
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug
+      <div
+        style={{
+          borderBottom: "1px solid #dee2e6",
+        }}
+      >
+        {Object.keys(posts).map((lang, key) => (
+          <Button
+            key={key}
+            onClick={e => {
+              e.preventDefault()
+              changeLang(lang)
+            }}
+            active={lang === currentLang}
+          >
+            {lang}
+          </Button>
+        ))}
+      </div>
+      {Object.keys(posts).map((lang, key) => {
         return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
+          <div key={`i_${key}`}>
+            {currentLang === lang && (
+              <PostsTab key={lang} posts={posts[lang]} />
+            )}
+          </div>
         )
       })}
     </Layout>
@@ -64,6 +82,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            lang
           }
         }
       }
