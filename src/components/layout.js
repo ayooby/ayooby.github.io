@@ -9,8 +9,9 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
 
+  const currentTheme = typeof window !== 'undefined' && window.localStorage.getItem("theme")
   const [theme, setTheme] = useState(
-    window.localStorage.getItem("theme") || "light"
+    currentTheme || "light"
   )
 
   const handleTheme = () => {
