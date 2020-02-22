@@ -5,10 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { ThemeProvider } from "styled-components"
+
+import { GlobalStyle } from "../utils/ui"
 
 const SEO = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
@@ -28,47 +31,50 @@ const SEO = ({ description, lang, meta, title }) => {
   const metaDescription = description || site.siteMetadata.description
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang,
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
+    <Fragment>
+        <Helmet
+          htmlAttributes={{
+            lang,
+          }}
+          title={title}
+          titleTemplate={`%s | ${site.siteMetadata.title}`}
+          meta={[
+            {
+              name: `description`,
+              content: metaDescription,
+            },
+            {
+              property: `og:title`,
+              content: title,
+            },
+            {
+              property: `og:description`,
+              content: metaDescription,
+            },
+            {
+              property: `og:type`,
+              content: `website`,
+            },
+            {
+              name: `twitter:card`,
+              content: `summary`,
+            },
+            {
+              name: `twitter:creator`,
+              content: site.siteMetadata.author,
+            },
+            {
+              name: `twitter:title`,
+              content: title,
+            },
+            {
+              name: `twitter:description`,
+              content: metaDescription,
+            },
+          ].concat(meta)}
+        ></Helmet>
+        <GlobalStyle />
+    </Fragment>
   )
 }
 

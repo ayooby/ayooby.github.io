@@ -31,6 +31,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
       <Bio />
+      <h1>Articles</h1>
       <div
         style={{
           borderBottom: "1px solid #dee2e6",
@@ -51,7 +52,10 @@ const BlogIndex = ({ data, location }) => {
       </div>
       {Object.keys(posts).map((lang, key) => {
         return (
-          <div key={`i_${key}`}>
+          <div
+            key={`i_${key}`}
+            style={{ direction: lang === "Farsi" ? "rtl" : "ltr" }}
+          >
             {currentLang === lang && (
               <PostsTab key={lang} posts={posts[lang]} />
             )}

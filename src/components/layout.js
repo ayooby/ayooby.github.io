@@ -1,11 +1,23 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
+import { ThemeProvider } from "styled-components"
 
+import { Button, Flex } from "../utils/ui"
 import { rhythm, scale } from "../utils/typography"
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
+
+  const [theme, setTheme] = useState(
+    window.localStorage.getItem("theme") || "light"
+  )
+
+  const handleTheme = () => {
+    const newTheme = (theme === "dark") ? "light" : "dark"
+    setTheme(newTheme)
+    window.localStorage.setItem("theme", newTheme)
+  }
 
   if (location.pathname === rootPath) {
     header = (
@@ -50,22 +62,18 @@ const Layout = ({ location, title, children }) => {
     )
   }
   return (
-    <div
-      style={{
-        marginLeft: `auto`,
-        marginRight: `auto`,
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      <header>{header}</header>
-      <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
-    </div>
+    <ThemeProvider theme={{ mode: theme }}>
+      <Flex>
+        <header>{header}</header>
+        <main>{children}</main>
+        <footer>
+          © {new Date().getFullYear()}, Built with
+          {` `}
+          <a href="https://www.gatsbyjs.org">Gatsby</a>
+          <Button onClick={handleTheme}>Switch Theme</Button>
+        </footer>
+      </Flex>
+    </ThemeProvider>
   )
 }
 
